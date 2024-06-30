@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ikram Bellini - Développeur Web & Apprenti en Cybersécurité</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;700&family=Poppins:wght@300;400;600&display=swap');
+
+        :root {
+            --bg-color: #0f0f17;
+            --text-color: #e0e0e0;
+            --accent-color: #61dafb;
+            --secondary-color: #bb86fc;
+            --tertiary-color: #4dabf7;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        header {
+            padding: 20px 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            background-color: rgba(15, 15, 23, 0.8);
+            backdrop-filter: blur(5px);
+            transition: all 0.3s ease;
+        }
+
+        header.scrolled {
+            padding: 10px 0;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        nav ul {
+            display: flex;
+            justify-content: center;
+            list-style-type: none;
+        }
+
+        nav ul li {
+            margin: 0 15px;
+        }
+
+        nav ul li a {
+            color: var(--text-color);
+            text-decoration: none;
+            font-size: 18px;
+            transition: color 0.3s ease;
+        }
+
+        nav ul li a:hover {
+            color: var(--accent-color);
+        }
+
+        #intro {
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        #intro h1 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            opacity: 0;
+            transform: translateY(50px);
+            animation: fadeInUp 1s ease forwards 1s;
+        }
+
+        #intro p {
+            font-size: 1.5rem;
+            margin-bottom: 30px;
+            opacity: 0;
+            transform: translateY(50px);
+            animation: fadeInUp 1s ease forwards 1.5s;
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: var(--accent-color);
+            color: var(--bg-color);
+            padding: 12px 24px;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            opacity: 0;
+            transform: translateY(50px);
+            animation: fadeInUp 1s ease forwards 2s;
+        }
+
+        .btn:hover {
+            background-color: var(--tertiary-color);
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(97, 218, 251, 0.4);
+        }
+
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .matrix-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+        }
+
+        section {
+            padding: 80px 0;
+        }
+
+        h2 {
+            font-size: 2.5rem;
+            margin-bottom: 40px;
+            text-align: center;
+            color: var(--accent-color);
+        }
+
+        .skills-container,
+        .projects-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+
+        .skill-card,
+        .project-card {
+            background-color: rgba(255, 255, 255, 0.05);
+            border-radius: 10px;
+            padding: 20px;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .skill-card:hover,
+        .project-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(97, 218, 251, 0.2);
+        }
+
+        .skill-card h3,
+        .project-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            color: var(--secondary-color);
+        }
+
+        .skill-card i,
+        .project-card i {
+            font-size: 3rem;
+            margin-bottom: 15px;
+            color: var(--accent-color);
+        }
+
+        footer {
+            text-align: center;
+            padding: 20px 0;
+            background-color: rgba(255, 255, 255, 0.05);
+        }
+
+        .social-icons {
+            margin-top: 20px;
+        }
+
+        .social-icons a {
+            color: var(--text-color);
+            font-size: 24px;
+            margin: 0 10px;
+            transition: color 0.3s ease;
+        }
+
+        .social-icons a:hover {
+            color: var(--accent-color);
+        }
+
+        @media (max-width: 768px) {
+            #intro h1 {
+                font-size: 2.5rem;
+            }
+
+            #intro p {
+                font-size: 1.2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="#intro">Accueil</a></li>
+                <li><a href="#skills">Compétences</a></li>
+                <li><a href="#projects">Projets</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section id="intro">
+            <canvas class="matrix-bg" id="matrix"></canvas>
+            <div class="container">
+                <h1>Ikram Bellini</h1>
+                <p>Développeur Web & Apprenti en Cybersécurité</p>
+                <a href="#contact" class="btn">Me contacter</a>
+            </div>
+        </section>
+
+        <section id="skills">
+            <div class="container">
+                <h2>Compétences</h2>
+                <div class="skills-container">
+                    <div class="skill-card">
+                        <i class="fas fa-code"></i>
+                        <h3>Développement Web</h3>
+                        <p>HTML, CSS, JavaScript, PHP, Symfony, Laravel, SQL</p>
+                    </div>
+                    <div class="skill-card">
+                        <i class="fas fa-shield-alt"></i>
+                        <h3>Cybersécurité</h3>
+                        <p>Pentesting, Analyse de vulnérabilités, Sécurité des réseaux</p>
+                    </div>
+                    <div class="skill-card">
+                        <i class="fas fa-server"></i>
+                        <h3>DevSecOps</h3>
+                        <p>CI/CD, Docker, Sécurité des conteneurs</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact">
+            <div class="container">
+                <h2>Contact</h2>
+                <p style="text-align: center;">N'hésitez pas à me contacter pour discuter de vos projets ou besoins en sécurité.</p>
+                <p style="text-align: center; margin-top: 20px;">
+                    <a href="mailto:ikramw3b@gmail.com" class="btn">Envoyer un email</a>
+                </p>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 - Ikram Bellini. Tous droits réservés.</p>                <div class="social-icons">
+                    <a href="https://github.com/z-ph3n0" target="_blank"><i class="fab fa-github"></i></a>
+                </div>
+    </footer>
+
+    <script>
+        // Animation Matrix
+        const canvas = document.getElementById('matrix');
+        const ctx = canvas.getContext('2d');
+
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+
+        const katakana = 'アァカサタナハマヤャラワガザダバパイィキシチニヒミリヰギジヂビピウゥクスツヌフムユュルグズブヅプエェケセテネヘメレヱゲゼデベペオォコソトノホモヨョロヲゴゾドボポヴッン';
+        const latin = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+        const nums = '0123456789';
+
+        const alphabet = katakana + latin + nums;
+
+        const fontSize = 16;
+        const columns = canvas.width/fontSize;
+
+        const rainDrops = [];
+
+        for( let x = 0; x < columns; x++ ) {
+            rainDrops[x] = 1;
+        }
+
+        const draw = () => {
+            ctx.fillStyle = 'rgba(15, 15, 23, 0.05)';
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+            ctx.fillStyle = '#61dafb';
+            ctx.font = fontSize + 'px monospace';
+
+            for(let i = 0; i < rainDrops.length; i++)
+            {
+                const text = alphabet.charAt(Math.floor(Math.random() * alphabet.length));
+                ctx.fillText(text, i*fontSize, rainDrops[i]*fontSize);
+
+                if(rainDrops[i]*fontSize > canvas.height && Math.random() > 0.975){
+                    rainDrops[i] = 0;
+                }
+                rainDrops[i]++;
+            }
+        };
+
+        setInterval(draw, 30);
+
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        window.addEventListener('scroll', () => {
+            const header = document.querySelector('header');
+            if (window.scrollY > 100) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+    </script>
+</body>
+</html>
